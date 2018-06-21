@@ -8,42 +8,43 @@
         
         <!-- Puzzle Title (Could Use Improvement) -->
         <h1 id="Header">
-            Puzzle #3: Strange Buttons 
+            Puzzle #1: Mysterious Buttons 
         </h1> 
         
-        <!-- Number Buttons -->
-        
+        <!--     Number Buttons      -->
         <!-- Top Row Buttons -->
-        <input class = "puz3Buttons" id = "0" type = "button" value = "0">
-        <input class = "puz3Buttons" id = "1" type = "button" value = "1">
-        <input class = "puz3Buttons" id = "2" type = "button" value = "2">
-        <input class = "puz3Buttons" id = "3" type = "button" value = "3">
-        <input class = "puz3Buttons" id = "4" type = "button" value = "4">
+        <input class = "puz3Buttons" id = "0" type = "button" value = "0" onClick="reply_click(this.id)">
+        <input class = "puz3Buttons" id = "1" type = "button" value = "1" onClick="reply_click(this.id)">
+        <input class = "puz3Buttons" id = "2" type = "button" value = "2" onClick="reply_click(this.id)">
+        <input class = "puz3Buttons" id = "3" type = "button" value = "3" onClick="reply_click(this.id)">
+        <input class = "puz3Buttons" id = "4" type = "button" value = "4" onClick="reply_click(this.id)">
         <!-- Bottom Row Buttons -->
-        <input class = "puz3Buttons" id = "5" type = "button" value = "5">
-        <input class = "puz3Buttons" id = "6" type = "button" value = "6">
-        <input class = "puz3Buttons" id = "7" type = "button" value = "7">
-        <input class = "puz3Buttons" id = "8" type = "button" value = "8">
-        <input class = "puz3Buttons" id = "9" type = "button" value = "9">
+        <input class = "puz3Buttons" id = "5" type = "button" value = "5" onClick="reply_click(this.id)">
+        <input class = "puz3Buttons" id = "6" type = "button" value = "6" onClick="reply_click(this.id)">
+        <input class = "puz3Buttons" id = "7" type = "button" value = "7" onClick="reply_click(this.id)">
+        <input class = "puz3Buttons" id = "8" type = "button" value = "8" onClick="reply_click(this.id)">
+        <input class = "puz3Buttons" id = "9" type = "button" value = "9" onClick="reply_click(this.id)">
         
+
         <!-- Hint Button -->
         <input class = "hintButtons" id = "puz3Hint" type = "button" value = "Hint">
 
-    </body>
-    
+    </body>  
     <script>
         
         // !!! puzID needs to be different for each page, yet able to be used by the script
-        var puzID = "3";
+        var puzID = "1";
         
+        var buttonID;
+
 
         //Code is each number 0-9 in the order they appear in pi (first digit occurance only)
         var codeArray = [3,1,4,5,9,2,6,8,7,0];
         
         var curCodeArrayIndex = 0;
+        
         // For Hints, takes Puzzle ID and gives the hint from an array of strings
         // !!! hint array needs to be accessible by all puzzle pages  ((( var hint = ["","","Check the Console For Information","",""]; )))
-
         $(function(){
             $(".hintButtons").click(hintGiver(puzID));
         });
@@ -52,15 +53,19 @@
         };
 
 
-
-        // Needs to be finished
+        // Helps transfer the button ID
+        reply_click = function(clickedID)
+        {
+            buttonID = clickedID;
+        }
+        
         $(function(){
-            $(".puz3Buttons").click(numChecker(parseInt(e.id)));
+            $(".puz3Buttons").click(numChecker(parseInt(buttonID)));
         });
-        // Needs to be finished
+        
         
 
-
+        // Checks the button pressed to see if it is correct
         numChecker = function(buttonValue){
             if(buttonValue == codeArray[curCodeArrayIndex]){
                 if(curCodeArrayIndex == codeArray.length - 1){
